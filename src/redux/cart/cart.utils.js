@@ -15,17 +15,17 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 };
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
-  const exisistingCartItem = cartItems.find(
+  const existingCartItem = cartItems.find(
     cartItem => cartItem.id === cartItemToRemove.id
-  )
+  );
 
-  if(exisistingCartItem.quantity === 1){
-    return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id)
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
   }
-  return cartItems.map(
-    cartItem => 
-    cartItem.id === cartItemToRemove.id ?
-    { ...cartItem, quantity: cartItem.quantity - 1}
-    : cartItem
-  )
-}
+
+  return cartItems.map(cartItem =>
+    cartItem.id === cartItemToRemove.id
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  );
+};
